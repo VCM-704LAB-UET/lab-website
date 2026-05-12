@@ -1,5 +1,5 @@
 site_name: VCM-704LAB-UET
-site_description: Video Coding for Machine Vision Research Group at UET-VNU
+site_description: Video Coding for Machines Research Group at UET-VNU
 site_author: VCM-704LAB-UET
 site_url: https://vcm-704lab-uet.github.io/lab-website/
 
@@ -9,14 +9,18 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  language: en
+  language: vi
   logo: assets/images/logo-placeholder.svg
   favicon: assets/images/favicon.svg
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.expand
     - navigation.top
     - navigation.footer
+    - navigation.indexes
+    - toc.follow
     - content.action.edit
     - content.action.view
     - content.code.copy
@@ -25,30 +29,32 @@ theme:
   palette:
     - scheme: default
       primary: indigo
-      accent: blue
+      accent: cyan
       toggle:
         icon: material/weather-night
-        name: Switch to dark mode
+        name: Chuyển sang giao diện tối
     - scheme: slate
       primary: indigo
-      accent: blue
+      accent: cyan
       toggle:
         icon: material/weather-sunny
-        name: Switch to light mode
+        name: Chuyển sang giao diện sáng
   font:
     text: Inter
     code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
 
 nav:
-  - Home: index.md
-  - About: about.md
-  - People: people.md
-  - Research: research.md
-  - Projects: projects.md
-  - Publications: publications.md
-  - Resources: resources.md
-  - Join Us: join-us.md
-  - Contact: contact.md
+  - Trang chủ: index.md
+  - Giới thiệu: about.md
+  - Thành viên: people.md
+  - Hướng nghiên cứu: research.md
+  - Dự án: projects.md
+  - Công bố: publications.md
+  - Tài nguyên: resources.md
+  - Tham gia nhóm: join-us.md
+  - Liên hệ: contact.md
 
 markdown_extensions:
   - admonition
@@ -85,6 +91,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/VCM-704LAB-UET
-      name: VCM-704LAB-UET on GitHub
+      name: VCM-704LAB-UET trên GitHub
 
 copyright: Copyright &copy; 2026 VCM-704LAB-UET
