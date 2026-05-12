@@ -4,171 +4,198 @@ hide:
   - toc
 ---
 
-<section class="vcm-hero" markdown>
-<div class="vcm-hero-content" markdown>
+<section class="vcm-landing" markdown>
 
-<div class="vcm-kicker">VCM-704LAB-UET · Video Coding for Machines</div>
+<div class="vcm-hero-pro" markdown>
+<div class="vcm-hero-left" markdown>
 
-# Mã hoá video cho thị giác máy
+<div class="vcm-eyebrow">VCM-704LAB-UET · Research Group</div>
 
-## Tối ưu hoá biểu diễn video cho các hệ thống trí tuệ nhân tạo, thiết bị biên và phân tích thị giác quy mô lớn.
+# Video Coding for Machines
 
-**VCM-704LAB-UET** là nhóm nghiên cứu tập trung vào **Video Coding for Machines (VCM)** — một hướng nghiên cứu mới nhằm thiết kế, cải tiến và đánh giá các hệ thống mã hoá video không chỉ cho người xem, mà còn cho các mô hình thị giác máy như phát hiện đối tượng, phân đoạn ngữ nghĩa, theo vết, nhận dạng sự kiện và hệ thống tự hành.
+## Mã hoá video hướng tác vụ cho các hệ thống thị giác máy, thiết bị biên và phân tích video thông minh.
 
-<div class="vcm-hero-actions" markdown>
-[Khám phá hướng nghiên cứu](research.md){ .md-button .md-button--primary }
-[Xem dự án](projects.md){ .md-button }
+VCM-704LAB-UET nghiên cứu các phương pháp **mã hoá video thế hệ mới** trong đó tín hiệu video không chỉ được tối ưu cho chất lượng cảm nhận của con người, mà còn được tối ưu cho hiệu năng của các mô hình thị giác máy như phát hiện đối tượng, phân đoạn, theo vết, nhận dạng sự kiện và hệ thống tự hành.
+
+<div class="vcm-actions" markdown>
+[Hướng nghiên cứu](research.md){ .md-button .md-button--primary }
+[Dự án đang triển khai](projects.md){ .md-button .vcm-button-secondary }
 </div>
 
 </div>
 
-<div class="vcm-hero-panel" markdown>
+<div class="vcm-hero-right" markdown>
+<div class="vcm-system-card" markdown>
 
-### Trọng tâm nghiên cứu
+<div class="vcm-system-title">Task-aware Video Coding Pipeline</div>
 
-- ROI-aware video coding
-- Compression-domain vision analytics
-- Edge-oriented VCM
-- Neural preprocessing for standard codecs
-- Benchmarking and evaluation for VCM
+<div class="vcm-pipeline" markdown>
+<div>Video Stream</div>
+<span>→</span>
+<div>Semantic / ROI Analysis</div>
+<span>→</span>
+<div>Codec Control</div>
+<span>→</span>
+<div>Machine Vision Task</div>
+</div>
 
+<div class="vcm-mini-metrics" markdown>
+<div><strong>Bitrate</strong><span>↓</span></div>
+<div><strong>Accuracy</strong><span>↑</span></div>
+<div><strong>Latency</strong><span>↓</span></div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="vcm-badges" markdown>
+<span>ROI-aware Coding</span>
+<span>Compression-domain Vision</span>
+<span>Edge VCM</span>
+<span>Neural Preprocessing</span>
+<span>Benchmarking</span>
+</div>
+
+</section>
+
+<section class="vcm-problem-section" markdown>
+
+<div class="vcm-section-heading" markdown>
+<div class="vcm-section-label">Research Motivation</div>
+## Từ mã hoá cho người xem đến mã hoá cho máy hiểu
+</div>
+
+<div class="vcm-two-column" markdown>
+<div markdown>
+Trong nhiều hệ thống hiện đại, video không còn chỉ được truyền đi để con người quan sát. Video ngày càng được xử lý bởi các mô hình trí tuệ nhân tạo đặt tại camera thông minh, robot, xe tự hành, máy chủ biên hoặc trung tâm phân tích dữ liệu.
+
+Do đó, một hệ thống mã hoá video hiệu quả cần trả lời câu hỏi: **thông tin nào trong video thực sự quan trọng cho tác vụ thị giác máy?**
+</div>
+
+<div class="vcm-question-card" markdown>
+### Câu hỏi nghiên cứu trung tâm
+Làm thế nào để giảm bitrate, độ trễ và chi phí tính toán trong khi vẫn duy trì, hoặc thậm chí cải thiện, độ chính xác của các tác vụ thị giác máy dưới tác động của nén video?
+</div>
+</div>
+
+</section>
+
+<section class="vcm-metric-strip" markdown>
+<div markdown>
+<strong>Human-centric coding</strong>
+<span>PSNR · MS-SSIM · VMAF</span>
+</div>
+<div markdown>
+<strong>Machine-centric coding</strong>
+<span>mAP · mIoU · IDF1 · HOTA · Latency</span>
+</div>
+<div markdown>
+<strong>System-centric coding</strong>
+<span>Bitrate · Energy · Memory · Edge Throughput</span>
 </div>
 </section>
 
----
+<section class="vcm-research-section" markdown>
 
-<section class="vcm-section" markdown>
-
-## Vì sao cần Video Coding for Machines?
-
-Trong các hệ thống video truyền thống, bộ mã hoá thường được tối ưu theo chất lượng cảm nhận của con người, ví dụ PSNR, MS-SSIM hoặc VMAF. Tuy nhiên, trong nhiều ứng dụng hiện đại, video được truyền đi chủ yếu để **máy phân tích**: camera thông minh, robot, xe tự hành, giám sát đô thị, kiểm tra công nghiệp, thiết bị biên và hệ thống phân tích video thời gian thực.
-
-Khi đó, câu hỏi nghiên cứu không còn chỉ là:
-
-> Làm thế nào để video nhìn đẹp hơn với cùng bitrate?
-
-mà trở thành:
-
-> Làm thế nào để mã hoá video sao cho giữ được nhiều nhất thông tin hữu ích cho tác vụ thị giác máy, trong khi vẫn giảm bitrate, độ trễ và chi phí tính toán?
-
-</section>
-
-<div class="vcm-stat-grid" markdown>
-
-<div class="vcm-stat-card" markdown>
-<span class="vcm-stat-number">01</span>
-### Task-aware Coding
-Mã hoá theo mức độ quan trọng đối với tác vụ máy thay vì chỉ theo chất lượng thị giác con người.
+<div class="vcm-section-heading" markdown>
+<div class="vcm-section-label">Research Directions</div>
+## Năm hướng nghiên cứu trọng tâm
 </div>
 
-<div class="vcm-stat-card" markdown>
-<span class="vcm-stat-number">02</span>
-### Standard-compatible
-Ưu tiên các phương pháp tương thích hoặc mở rộng từ HEVC/VVC/H.26x để tăng khả năng ứng dụng.
-</div>
+<div class="vcm-direction-grid" markdown>
 
-<div class="vcm-stat-card" markdown>
-<span class="vcm-stat-number">03</span>
-### Edge-efficient
-Cân bằng bitrate, độ trễ, năng lượng, bộ nhớ và độ chính xác mô hình trên thiết bị biên.
-</div>
-
-<div class="vcm-stat-card" markdown>
-<span class="vcm-stat-number">04</span>
-### Reproducible Research
-Xây dựng pipeline, benchmark, mã nguồn và giao thức đánh giá có khả năng tái lập.
-</div>
-
-</div>
-
----
-
-## Các hướng nghiên cứu chính
-
-<div class="vcm-card-grid" markdown>
-
-<div class="vcm-research-card" markdown>
-<div class="vcm-card-label">Direction 01</div>
+<div class="vcm-direction-card card-roi" markdown>
+<div class="vcm-direction-index">01</div>
 ### ROI-aware Video Coding
-Nghiên cứu cơ chế phân bổ bit thông minh cho các vùng quan trọng đối với tác vụ máy, chẳng hạn đối tượng, vùng chuyển động, vùng rủi ro hoặc vùng ngữ nghĩa.
+Phân bổ bit theo mức độ quan trọng của vùng ảnh đối với tác vụ máy: đối tượng, vùng chuyển động, vùng rủi ro, vùng ngữ nghĩa.
 
-**Từ khóa:** ROI map, QP control, CTU/CU-level coding, task-aware rate control.
+<span>ROI map · QP control · CTU/CU-level · task-aware rate control</span>
 </div>
 
-<div class="vcm-research-card" markdown>
-<div class="vcm-card-label">Direction 02</div>
-### Compression-domain Analytics
-Khai thác thông tin có sẵn trong miền nén như motion vectors, residuals, transform coefficients, partition maps và coding modes để hỗ trợ phân tích thị giác chi phí thấp.
+<div class="vcm-direction-card card-cdv" markdown>
+<div class="vcm-direction-index">02</div>
+### Compression-domain Vision
+Khai thác motion vectors, residuals, transform coefficients và coding modes để phân tích video với chi phí thấp.
 
-**Từ khóa:** motion vector, residual map, coding mode, compressed-domain vision.
+<span>motion vector · residual map · coding mode · low-complexity analytics</span>
 </div>
 
-<div class="vcm-research-card" markdown>
-<div class="vcm-card-label">Direction 03</div>
+<div class="vcm-direction-card card-edge" markdown>
+<div class="vcm-direction-index">03</div>
 ### Edge-oriented VCM
-Thiết kế pipeline mã hoá và phân tích video cho thiết bị biên, nơi tài nguyên tính toán, băng thông, năng lượng và độ trễ đều bị giới hạn.
+Thiết kế pipeline mã hoá và thị giác máy trên thiết bị biên, cân bằng độ trễ, năng lượng, băng thông và độ chính xác.
 
-**Từ khóa:** Jetson, real-time analytics, edge-server collaboration, latency-aware coding.
+<span>Jetson · edge AI · real-time · latency-aware coding</span>
 </div>
 
-<div class="vcm-research-card" markdown>
-<div class="vcm-card-label">Direction 04</div>
+<div class="vcm-direction-card card-npp" markdown>
+<div class="vcm-direction-index">04</div>
 ### Neural Preprocessing
-Phát triển các mô-đun tiền xử lý dùng học sâu trước khi đưa video vào codec chuẩn nhằm bảo toàn thông tin quan trọng cho mô hình thị giác máy.
+Dùng mô-đun học sâu để tiền xử lý video trước codec chuẩn, bảo toàn thông tin quan trọng cho mô hình thị giác máy.
 
-**Từ khóa:** neural preprocessing, wavelet, enhancement, hybrid neural-standard coding.
+<span>wavelet · enhancement · neural-standard hybrid · task preservation</span>
 </div>
 
-<div class="vcm-research-card" markdown>
-<div class="vcm-card-label">Direction 05</div>
+<div class="vcm-direction-card card-bench" markdown>
+<div class="vcm-direction-index">05</div>
 ### VCM Benchmarking
-Xây dựng giao thức đánh giá có khả năng tái lập cho VCM, kết hợp chỉ số nén với chỉ số tác vụ như mAP, mIoU, MOTA, IDF1 và latency.
+Xây dựng giao thức đánh giá có khả năng tái lập cho Video Coding for Machines dựa trên cả nén, tác vụ và hệ thống.
 
-**Từ khóa:** BD-rate for machine tasks, reproducibility, benchmark protocol.
+<span>BD-rate · mAP · mIoU · tracking · reproducibility</span>
 </div>
 
 </div>
+</section>
 
----
+<section class="vcm-framework-section" markdown>
 
-## Triết lý nghiên cứu
+<div class="vcm-section-heading" markdown>
+<div class="vcm-section-label">Research Framework</div>
+## Khung triển khai nghiên cứu của nhóm
+</div>
 
-<div class="vcm-principle-grid" markdown>
-
+<div class="vcm-framework" markdown>
 <div markdown>
-### 1. Học thuật có cơ sở
-Mỗi đề xuất phải xuất phát từ một câu hỏi nghiên cứu rõ ràng, có phân tích khoảng trống, có baseline và có luận điểm khoa học kiểm chứng được.
+### 1. Problem Formulation
+Xác định bài toán, giả thuyết nghiên cứu, khoảng trống học thuật và tiêu chí đánh giá.
 </div>
-
 <div markdown>
-### 2. Thực nghiệm có khả năng tái lập
-Mọi kết quả cần đi kèm dataset, cấu hình codec, model thị giác máy, script đánh giá, log thí nghiệm và bảng phân tích đầy đủ.
+### 2. Reproducible Baseline
+Xây dựng pipeline baseline gồm codec, dataset, mô hình thị giác máy và script đánh giá.
 </div>
-
 <div markdown>
-### 3. Hướng tới ứng dụng thực tế
-Các phương pháp được ưu tiên nếu có khả năng tương thích codec chuẩn, triển khai trên thiết bị biên hoặc tích hợp vào hệ thống phân tích video thực tế.
+### 3. Task-aware Method
+Đề xuất cơ chế điều khiển mã hoá dựa trên ROI, đặc trưng miền nén, neural preprocessing hoặc ràng buộc thiết bị biên.
+</div>
+<div markdown>
+### 4. Scientific Evaluation
+Đánh giá theo bitrate, task accuracy, latency, complexity, ablation study và phân tích giới hạn.
+</div>
 </div>
 
-</div>
+</section>
 
----
+<section class="vcm-output-section" markdown>
 
-## Không gian làm việc nghiên cứu
+<div class="vcm-output-card" markdown>
+### Định hướng đầu ra
 
-Nhóm sử dụng GitHub như một **research workspace** để quản lý mã nguồn, tài liệu, tiến độ, kết quả thí nghiệm và bản thảo học thuật.
-
-| Thành phần | Vai trò |
+| Nhóm đầu ra | Sản phẩm kỳ vọng |
 |---|---|
-| GitHub Organization | Không gian chung cho toàn bộ lab |
-| Project Board | Quản lý task, milestone và tiến độ hằng tuần |
-| Research Repositories | Lưu code, config, script và kết quả thí nghiệm |
-| Reading List | Tổng hợp paper, survey, benchmark và dataset |
-| Papers & Reports | Quản lý manuscript, slide, poster và technical report |
+| Công bố khoa học | Bài báo hội nghị, tạp chí, workshop chuyên ngành multimedia và computer vision |
+| Mã nguồn | Pipeline mã hoá, script đánh giá, cấu hình thí nghiệm, baseline tái lập |
+| Benchmark | Dataset protocol, encoding ladder, metric suite, bảng kết quả chuẩn |
+| Đào tạo | Đồ án, luận văn, seminar, slide học thuật, nhóm sinh viên nghiên cứu |
 
-<div class="vcm-footer-cta" markdown>
-### Hướng tới một nền tảng nghiên cứu VCM bài bản, tái lập và có khả năng công bố quốc tế.
+</div>
+
+<div class="vcm-final-cta" markdown>
+## Xây dựng một nền tảng nghiên cứu VCM bài bản, mở, tái lập và có khả năng công bố quốc tế.
 
 [Tham gia nhóm nghiên cứu](join-us.md){ .md-button .md-button--primary }
-[GitHub Organization](https://github.com/VCM-704LAB-UET){ .md-button }
+[GitHub Organization](https://github.com/VCM-704LAB-UET){ .md-button .vcm-button-secondary }
 </div>
+
+</section>
