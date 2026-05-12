@@ -1,144 +1,202 @@
 ---
-title: Research
+title: Hướng nghiên cứu
 ---
 
-# Research Directions
+# Hướng nghiên cứu
 
-VCM-704LAB-UET studies video coding systems for machine vision applications. Our research directions are organized around the relationship between compression, visual information, machine task accuracy, and deployment constraints.
+VCM-704LAB-UET tập trung vào **Video Coding for Machines (VCM)** — hướng nghiên cứu nhằm tối ưu hoá quá trình mã hoá video cho các tác vụ thị giác máy. Thay vì chỉ tối ưu chất lượng cảm nhận của con người, VCM đặt trọng tâm vào việc bảo toàn thông tin có ích cho mô hình AI dưới các ràng buộc về bitrate, độ trễ, năng lượng, tài nguyên tính toán và khả năng triển khai.
+
+## Khung nghiên cứu tổng quát
+
+Một hệ thống VCM có thể được nhìn như một vòng lặp gồm bốn thành phần:
+
+```text
+Video input
+    ↓
+Task-relevant information estimation
+    ↓
+Codec control / preprocessing / compressed-domain representation
+    ↓
+Machine vision task evaluation
+```
+
+Mục tiêu của nhóm là nghiên cứu các phương pháp tác động vào một hoặc nhiều thành phần trong pipeline này để đạt được sự cân bằng tốt hơn giữa **compression efficiency** và **machine task utility**.
 
 ---
 
 ## 1. ROI-aware Video Coding for Machine Vision
 
-### Motivation
+### Mục tiêu
 
-In machine vision applications, not all regions in a video frame contribute equally to downstream task performance. Objects, semantic regions, motion-sensitive areas, and risk-sensitive zones may require higher coding quality than background regions.
+Hướng này nghiên cứu cách phân bổ tài nguyên mã hoá không đồng đều theo mức độ quan trọng của từng vùng trong video đối với tác vụ thị giác máy. Các vùng chứa đối tượng, vùng chuyển động, vùng có rủi ro cao hoặc vùng có ý nghĩa ngữ nghĩa quan trọng có thể được mã hoá với chất lượng cao hơn, trong khi vùng nền ít quan trọng có thể được nén mạnh hơn.
 
-### Research Questions
+### Câu hỏi nghiên cứu
 
-- How can we estimate task-relevant regions before or during encoding?
-- Should QP control be applied at frame, CTU, CU, object, or semantic-region level?
-- How can ROI maps be propagated temporally?
-- How should machine accuracy and bitrate be jointly optimized?
+- ROI nên được xác định từ detector, segmentation model, motion field, saliency map hay thông tin miền nén?
+- Nên điều khiển chất lượng ở mức frame, CTU, CU, object-level hay semantic-region level?
+- Làm thế nào để lan truyền ROI theo thời gian nhằm tránh dao động chất lượng giữa các frame?
+- Làm thế nào để thiết kế hàm tối ưu cân bằng giữa bitrate và task accuracy?
+- ROI coding có ảnh hưởng thế nào đến chất lượng người xem trong các hệ thống human-machine collaborative analytics?
 
-### Example Topics
+### Hướng tiếp cận kỹ thuật
 
-- object-aware ROI map generation,
-- CTU-level and CU-level QP adaptation,
-- task-aware rate control,
-- temporal ROI propagation,
-- human-machine quality trade-off.
+| Thành phần | Nội dung nghiên cứu |
+|---|---|
+| ROI estimation | Xây dựng bản đồ quan trọng từ object detector, segmentation, tracking, motion hoặc risk map |
+| QP control | Điều chỉnh QP ở mức CTU/CU/object dựa trên mức độ quan trọng |
+| Temporal smoothing | Làm mượt ROI và QP theo thời gian để giảm flickering và bất ổn task accuracy |
+| Rate control | Phân bổ bitrate theo ràng buộc tổng thể của hệ thống |
+| Evaluation | Đánh giá bằng mAP, mIoU, tracking metrics, bitrate và BD-rate theo task |
 
-### Expected Outputs
+### Đầu ra kỳ vọng
 
-- ROI-aware HEVC/VVC-compatible coding framework,
-- reproducible object detection under compression pipeline,
-- BD-rate versus mAP/mIoU analysis,
-- journal or conference manuscripts.
+- Baseline ROI-aware coding tương thích HEVC/VVC.
+- Script sinh ROI map từ detector hoặc ground truth.
+- Module điều khiển QP theo ROI.
+- Báo cáo thực nghiệm bitrate–accuracy.
+- Bài báo về task-aware bit allocation.
 
 ---
 
 ## 2. Compression-domain Vision Analytics
 
-### Motivation
+### Mục tiêu
 
-Compressed bitstreams already contain useful information such as motion vectors, residuals, transform coefficients, partition structures, and coding modes. These features can support low-complexity visual analytics without fully decoding every frame.
+Hướng này nghiên cứu cách khai thác trực tiếp thông tin đã tồn tại trong bitstream hoặc quá trình mã hoá, thay vì luôn giải mã toàn bộ video về pixel domain. Các tín hiệu như motion vector, residual, transform coefficient, partition map và coding mode có thể phản ánh chuyển động, biên, sai khác dự đoán hoặc cấu trúc nội dung.
 
-### Research Questions
+### Câu hỏi nghiên cứu
 
-- Which compressed-domain features are useful for detection, segmentation, tracking, or event analysis?
-- How can motion vectors and residuals approximate visual saliency or task importance?
-- Can codec-side information reduce machine vision computation?
+- Motion vector có thể thay thế hoặc hỗ trợ optical flow trong các tác vụ tracking và motion analysis hay không?
+- Residual có thể dùng để phát hiện vùng mới xuất hiện, vùng chuyển động hoặc vùng bất thường không?
+- Coding mode và partition structure có tương quan với độ phức tạp không gian hoặc ngữ nghĩa của nội dung không?
+- Có thể thiết kế mô hình thị giác nhẹ sử dụng kết hợp pixel-domain và compression-domain features hay không?
 
-### Example Topics
+### Hướng tiếp cận kỹ thuật
 
-- motion-vector-based motion analysis,
-- residual-guided importance estimation,
-- coding-mode-aware feature extraction,
-- compressed-domain object/event detection,
-- hybrid pixel-domain and compression-domain analytics.
+| Tín hiệu miền nén | Vai trò tiềm năng |
+|---|---|
+| Motion vector | Ước lượng chuyển động, tracking, temporal propagation |
+| Residual map | Phát hiện vùng khó dự đoán, vùng thay đổi hoặc vùng chứa thông tin mới |
+| Transform coefficients | Phân tích năng lượng tần số, texture và artifact |
+| Coding modes | Gợi ý độ phức tạp nội dung và cấu trúc dự đoán |
+| Partition maps | Phản ánh mức chi tiết không gian và biên đối tượng |
+
+### Đầu ra kỳ vọng
+
+- Tool trích xuất đặc trưng miền nén từ HEVC/VVC/H.264.
+- Phân tích tương quan giữa compression-domain features và task accuracy.
+- Mô hình lightweight analytics sử dụng motion/residual/coding features.
+- Bài báo về low-complexity compressed-domain VCM.
 
 ---
 
 ## 3. Edge-oriented Video Coding and Analytics
 
-### Motivation
+### Mục tiêu
 
-Many intelligent vision systems are deployed on edge devices with limited computation, memory, power, and bandwidth. Efficient video coding must therefore consider not only bitrate but also latency, throughput, and energy consumption.
+Hướng này tập trung vào các hệ thống video thông minh triển khai trên thiết bị biên, nơi tài nguyên tính toán, bộ nhớ, năng lượng, băng thông và độ trễ đều bị giới hạn. Thay vì tối ưu codec và mô hình AI riêng rẽ, nhóm nghiên cứu cách đồng thiết kế pipeline mã hoá–truyền tải–phân tích.
 
-### Research Questions
+### Câu hỏi nghiên cứu
 
-- How should bitrate, latency, and task accuracy be balanced on edge devices?
-- Which part of the pipeline should run on the device and which part should run on the server?
-- How can video encoding and machine vision inference be co-designed?
+- Nên xử lý phần nào tại edge device và phần nào tại server?
+- Làm thế nào để điều chỉnh bitrate theo độ khó của cảnh và yêu cầu tác vụ?
+- Có thể dùng thông tin từ mô hình AI để điều khiển encoder theo thời gian thực hay không?
+- Trade-off giữa bitrate, latency, FPS, energy và accuracy nên được mô hình hoá như thế nào?
 
-### Example Topics
+### Hướng tiếp cận kỹ thuật
 
-- real-time video coding on Jetson platforms,
-- edge-server collaborative analytics,
-- latency-aware bitrate control,
-- energy-aware video compression,
-- deployment-oriented VCM evaluation.
+| Lớp hệ thống | Nội dung nghiên cứu |
+|---|---|
+| Video pipeline | Decode, preprocess, encode, transmit, infer |
+| Edge hardware | Jetson Nano/Orin, GPU/CPU profiling, memory usage |
+| Adaptive coding | Điều chỉnh bitrate/QP/GOP theo task feedback |
+| Collaborative analytics | Chia việc giữa edge và server |
+| System metrics | FPS, latency, energy, memory, throughput, accuracy |
+
+### Đầu ra kỳ vọng
+
+- Pipeline edge VCM chạy thực tế trên thiết bị biên.
+- Benchmark latency–bitrate–accuracy.
+- Báo cáo profiling tài nguyên phần cứng.
+- Demo real-time video analytics dưới ràng buộc băng thông.
 
 ---
 
 ## 4. Neural Preprocessing for Standard Codecs
 
-### Motivation
+### Mục tiêu
 
-Instead of replacing standard video codecs with fully learned codecs, a practical approach is to use lightweight neural preprocessing before standard encoding. The goal is to preserve task-relevant information while maintaining compatibility with existing codecs.
+Hướng này nghiên cứu các mô-đun học sâu tiền xử lý video trước khi đưa vào codec chuẩn. Thay vì thay thế hoàn toàn HEVC/VVC bằng learned codec, cách tiếp cận này giữ tính tương thích chuẩn nhưng bổ sung khả năng làm nổi bật hoặc bảo toàn thông tin có ích cho tác vụ máy.
 
-### Research Questions
+### Câu hỏi nghiên cứu
 
-- Can neural preprocessing improve machine task accuracy after compression?
-- How can preprocessing be optimized jointly with downstream vision tasks?
-- Can wavelet or frequency-domain representations improve robustness under compression?
+- Neural preprocessing có thể cải thiện task accuracy sau nén mà không làm tăng bitrate đáng kể không?
+- Nên tối ưu preprocessing theo perceptual quality, task loss hay kết hợp cả hai?
+- Các biểu diễn wavelet, frequency-domain hoặc attention-based có giúp chống suy giảm do nén không?
+- Làm thế nào để thiết kế mô hình đủ nhẹ cho edge deployment?
 
-### Example Topics
+### Hướng tiếp cận kỹ thuật
 
-- task-preserving video enhancement,
-- wavelet-enhanced neural preprocessing,
-- compression artifact-aware preprocessing,
-- lightweight preprocessing for edge devices,
-- hybrid neural-standard coding.
+| Thành phần | Nội dung nghiên cứu |
+|---|---|
+| Preprocessing network | Enhancement, denoising, feature-preserving transformation |
+| Wavelet/frequency module | Khai thác miền tần số để bảo toàn chi tiết có ích |
+| Task loss | Tối ưu theo detection/segmentation/tracking accuracy |
+| Codec compatibility | Đầu ra vẫn được mã hoá bằng codec chuẩn |
+| Lightweight design | Giảm số tham số, FLOPs và latency |
+
+### Đầu ra kỳ vọng
+
+- Baseline neural preprocessing + HEVC/VVC.
+- So sánh task accuracy trước và sau preprocessing.
+- Ablation study về loss, kiến trúc và bitrate.
+- Bài báo về hybrid neural-standard VCM.
 
 ---
 
 ## 5. Benchmarking and Evaluation for VCM
 
-### Motivation
+### Mục tiêu
 
-Video Coding for Machines requires evaluation protocols beyond PSNR, MS-SSIM, and VMAF. A coding system should be evaluated based on task accuracy, bitrate, latency, complexity, and reproducibility.
+Một thách thức lớn của VCM là đánh giá. Nếu chỉ dùng PSNR hoặc VMAF, ta có thể bỏ qua ảnh hưởng thật sự của nén lên mô hình thị giác máy. Vì vậy, nhóm xây dựng benchmark và giao thức đánh giá kết hợp cả chỉ số nén, chỉ số tác vụ và chỉ số hệ thống.
 
-### Research Questions
+### Câu hỏi nghiên cứu
 
-- Which datasets and machine vision tasks should be used for fair evaluation?
-- How should BD-rate be computed for machine task metrics?
-- How can experiments be reproduced across codecs, datasets, and models?
+- Dataset nào phù hợp cho detection, segmentation, tracking và autonomous perception dưới nén?
+- Encoding ladder nên được thiết kế như thế nào để so sánh công bằng?
+- Làm thế nào để tính BD-rate theo mAP, mIoU hoặc tracking metrics?
+- Cần ghi nhận metadata nào để kết quả có khả năng tái lập?
 
-### Example Metrics
+### Bộ chỉ số đánh giá
 
-| Task | Metrics |
+| Nhóm chỉ số | Ví dụ |
 |---|---|
-| Detection | mAP, AP50, AP75 |
-| Segmentation | mIoU |
-| Tracking | MOTA, IDF1, HOTA |
 | Compression | bitrate, bpp, PSNR, MS-SSIM, VMAF |
-| Edge Deployment | FPS, latency, memory, energy |
-| VCM Trade-off | BD-rate versus task accuracy |
+| Detection | mAP, AP50, AP75 |
+| Segmentation | mIoU, pixel accuracy |
+| Tracking | MOTA, IDF1, HOTA |
+| Edge/system | FPS, latency, memory, energy |
+| VCM trade-off | BD-rate versus task accuracy |
+
+### Đầu ra kỳ vọng
+
+- Bộ script encode/evaluate thống nhất.
+- Giao thức benchmark cho nhiều dataset và codec.
+- Bảng kết quả baseline công khai.
+- Reproducibility checklist cho từng thí nghiệm.
 
 ---
 
-## Research Integration
+## Tích hợp các hướng nghiên cứu
 
-The five directions are designed to support each other:
+Các hướng nghiên cứu không tách rời mà bổ trợ cho nhau:
 
-```text
-ROI-aware Coding        → task-aware bit allocation
-Compression-domain VCM  → low-cost task-relevant features
-Edge VCM                → real-time deployment constraints
-Neural Preprocessing    → task-preserving signal enhancement
-Benchmarking            → fair and reproducible evaluation
-```
+| Hướng | Đóng góp vào hệ sinh thái VCM |
+|---|---|
+| ROI-aware coding | Điều khiển phân bổ bitrate theo thông tin quan trọng |
+| Compression-domain analytics | Cung cấp tín hiệu chi phí thấp cho task-awareness |
+| Edge-oriented VCM | Đưa phương pháp vào bối cảnh triển khai thực tế |
+| Neural preprocessing | Tăng khả năng bảo toàn thông tin trước mã hoá |
+| Benchmarking | Đảm bảo đánh giá công bằng, tái lập và có giá trị học thuật |
 
-Together, they form a complete research ecosystem for efficient video coding for intelligent visual systems.
+Mục tiêu dài hạn là hình thành một hệ sinh thái nghiên cứu trong đó mỗi đề xuất mới đều có baseline, giao thức đánh giá, phân tích giới hạn và khả năng mở rộng thành bài báo khoa học.
