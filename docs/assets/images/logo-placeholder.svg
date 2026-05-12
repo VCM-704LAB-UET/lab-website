@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="VCM Lab Logo">
+  <rect width="128" height="128" rx="28" fill="#1e3a8a"/>
+  <path d="M30 38h68v52H30z" fill="#ffffff" opacity="0.94"/>
+  <path d="M40 50h22v10H40zM40 68h48v8H40z" fill="#2563eb"/>
+  <circle cx="88" cy="55" r="7" fill="#1e3a8a"/>
+  <path d="M32 98h64" stroke="#93c5fd" stroke-width="8" stroke-linecap="round"/>
+</svg>
