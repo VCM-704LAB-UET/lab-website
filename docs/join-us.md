@@ -1,90 +1,87 @@
 ---
-title: Join Us
+title: Tham gia nhóm
 ---
 
-# Join Us
+# Tham gia nhóm nghiên cứu
 
-VCM-704LAB-UET welcomes students who are interested in video coding, computer vision, machine learning, embedded systems, edge AI, and multimedia systems.
+VCM-704LAB-UET chào đón sinh viên quan tâm đến **mã hoá video, thị giác máy, học sâu, hệ thống nhúng, edge AI và multimedia systems**. Nhóm phù hợp với các bạn muốn phát triển năng lực nghiên cứu học thuật, xây dựng sản phẩm kỹ thuật có khả năng tái lập và hướng tới công bố khoa học.
 
----
+## Bạn phù hợp với nhóm nếu quan tâm đến
 
-## Who Should Join?
+- video coding, HEVC, VVC, H.26x,
+- computer vision, object detection, segmentation, tracking,
+- machine learning và deep learning,
+- edge AI, Jetson, camera thông minh, robot,
+- xử lý tín hiệu ảnh/video,
+- xây dựng benchmark và đánh giá thực nghiệm,
+- viết báo cáo khoa học, slide học thuật và bài báo.
 
-You may be a good fit if you are interested in one or more of the following topics:
+## Các track tham gia
 
-- video compression,
-- computer vision,
-- object detection and segmentation,
-- video analytics,
-- machine learning,
-- embedded AI,
-- edge computing,
-- robotics and autonomous systems,
-- scientific programming,
-- academic writing.
-
----
-
-## Available Research Tracks
-
-| Track | Suitable For | Expected Output |
+| Track | Phù hợp với | Đầu ra kỳ vọng |
 |---|---|---|
-| Reading Track | New students | Paper summaries, survey tables, weekly presentations |
-| Engineering Track | Students with coding background | Reproducible code, scripts, baseline experiments |
-| Research Track | Advanced students | Method proposal, experiments, paper sections |
-| Deployment Track | Embedded/robotics students | Edge pipeline, demo, latency and performance analysis |
+| Reading Track | Sinh viên mới bắt đầu nghiên cứu | Paper summary, bảng survey, seminar ngắn |
+| Engineering Track | Sinh viên có nền tảng lập trình | Code tái lập, script, baseline, documentation |
+| Experiment Track | Sinh viên cẩn thận với số liệu | Bảng kết quả, log, ablation study, phân tích lỗi |
+| Research Track | Sinh viên có nền tảng tốt | Đề xuất phương pháp, formulation, paper section |
+| Deployment Track | Sinh viên quan tâm hệ thống nhúng | Demo edge AI, profiling, latency/energy analysis |
 
----
+## Lộ trình 4 tuần đầu
 
-## What You Will Learn
-
-Students joining the lab may learn:
-
-- how to read scientific papers,
-- how to build a research problem,
-- how to implement reproducible experiments,
-- how to use GitHub for research collaboration,
-- how to evaluate video coding systems,
-- how to write technical reports and papers,
-- how to prepare academic presentations.
-
----
-
-## Expected Commitment
-
-A typical student researcher is expected to:
-
-- attend weekly meetings,
-- update GitHub Issues regularly,
-- submit weekly progress reports,
-- read assigned papers,
-- maintain clean code and documentation,
-- report experimental results honestly and scientifically.
-
----
-
-## First 4 Weeks for New Members
-
-| Week | Objective | Output |
+| Tuần | Mục tiêu | Đầu ra bắt buộc |
 |---|---|---|
-| Week 1 | Understand lab directions and GitHub workflow | Personal research plan |
-| Week 2 | Read assigned papers | Paper summary and comparison table |
-| Week 3 | Reproduce a small baseline | Code and result log |
-| Week 4 | Present initial progress | 5-minute research presentation |
+| Tuần 1 | Làm quen với VCM, GitHub workflow và hướng nghiên cứu | Chọn hướng, tạo GitHub account, nhận task đầu tiên |
+| Tuần 2 | Đọc paper nền tảng | Tóm tắt 2–3 paper và trình bày 5 phút |
+| Tuần 3 | Reproduce baseline nhỏ | Chạy được script encode/evaluate hoặc mô hình vision baseline |
+| Tuần 4 | Báo cáo tiến độ đầu tiên | Slide ngắn gồm problem, method, result, next step |
 
----
+## Kỹ năng sẽ được phát triển
 
-## How to Apply
+Sau một giai đoạn tham gia nghiêm túc, sinh viên có thể phát triển các năng lực:
 
-Please prepare the following information:
+- đọc và phân tích paper quốc tế,
+- đặt câu hỏi nghiên cứu,
+- triển khai baseline có khả năng tái lập,
+- sử dụng GitHub để quản lý nghiên cứu,
+- thiết kế thí nghiệm và phân tích kết quả,
+- viết technical report và manuscript,
+- trình bày seminar khoa học,
+- làm việc theo nhóm nghiên cứu.
 
-1. full name,
-2. academic program,
-3. year of study,
-4. programming experience,
-5. research interests,
-6. previous projects, if any,
-7. expected research track,
-8. motivation for joining the lab.
+## Yêu cầu tối thiểu
 
-Then contact the lab supervisor or project lead.
+Nhóm không yêu cầu sinh viên phải biết sẵn toàn bộ video coding hoặc deep learning. Tuy nhiên, sinh viên cần có:
+
+- thái độ nghiêm túc và chủ động,
+- khả năng đọc tài liệu tiếng Anh kỹ thuật,
+- nền tảng lập trình cơ bản bằng Python hoặc C/C++,
+- khả năng báo cáo tiến độ đều đặn,
+- cam kết trung thực với kết quả thực nghiệm,
+- sẵn sàng học các công cụ mới.
+
+## Quy trình tham gia
+
+1. Đọc trang [Giới thiệu](about.md) và [Hướng nghiên cứu](research.md).
+2. Chọn 1–2 hướng quan tâm nhất.
+3. Chuẩn bị một đoạn giới thiệu ngắn về bản thân.
+4. Gửi thông tin cho người phụ trách nhóm.
+5. Nhận task đọc paper hoặc reproduce baseline đầu tiên.
+6. Báo cáo kết quả trong buổi họp nhóm.
+
+## Thông tin cần chuẩn bị
+
+```text
+Họ và tên:
+Khoá/ngành học:
+Email:
+GitHub username:
+Kỹ năng lập trình:
+Kinh nghiệm AI/computer vision/video coding nếu có:
+Hướng nghiên cứu quan tâm:
+Thời gian có thể cam kết mỗi tuần:
+Mục tiêu cá nhân khi tham gia nhóm:
+```
+
+## Kỳ vọng của nhóm
+
+VCM-704LAB-UET hướng tới xây dựng môi trường nghiên cứu chuyên nghiệp, trong đó mỗi thành viên đều có đóng góp cụ thể và nhìn thấy sự tiến bộ của mình qua từng tuần. Nhóm khuyến khích sinh viên bắt đầu từ việc nhỏ nhưng làm nghiêm túc: đọc kỹ, chạy được, ghi chép đầy đủ, báo cáo trung thực và cải tiến liên tục.
